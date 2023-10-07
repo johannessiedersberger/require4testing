@@ -2,6 +2,7 @@ package com.iu.require4testing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.DispatcherType;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -22,13 +23,9 @@ public class Require4testingApplication extends SpringBootServletInitializer {
 		SpringApplication.run(Require4testingApplication.class, args);
 	}
 
-
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		FacesServlet servlet = new FacesServlet();
-		ServletRegistrationBean servletRegistrationBean =
-				new ServletRegistrationBean(servlet, "*.jsf");
-		return servletRegistrationBean;
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Require4testingApplication.class);
 	}
 
 }
