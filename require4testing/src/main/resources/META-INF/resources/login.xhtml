@@ -18,10 +18,17 @@
 
         <h:panelGrid columns="2" cellpadding="5">
             <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username"  required="true" label="username" />
+            <p:inputText id="username" value="#{loginController.username}" required="true" label="username" />
 
             <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" required="true" label="password" />
+            <p:password id="password" value="#{loginController.password}" required="true" label="password" />
+
+            <p:outputLabel for="country" value="Country: "/>
+            <p:selectOneMenu id="country" value="#{loginController.userType}" style="width:150px">
+                <p:ajax listener="#{loginController.onUserTypeChange}"/>
+                <f:selectItem itemLabel="Nutzer auswählen" itemValue="" noSelectionOption="true"/>
+                <f:selectItems value="#{loginController.userTypes}"/>
+            </p:selectOneMenu>
 
             <f:facet name="footer">
                 <p:commandButton value="Login"  action="#{loginController.login}" />
