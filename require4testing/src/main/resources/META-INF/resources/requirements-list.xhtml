@@ -13,10 +13,21 @@
 
     </p:menubar>
     <h:form>
+        <div class="card">
+            <p:dataTable var="requirement" value="#{requirementsController.requirements}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{requirement.id}" />
+                </p:column>
 
+                <p:column headerText="Name">
+                    <h:outputText value="#{requirement.name}" />
+                </p:column>
 
-
-
+                <p:column headerText="Beschreibung">
+                    <h:outputText value="#{requirement.description}" />
+                </p:column>
+            </p:dataTable>
+        </div>
     </h:form>
 
 </h:body>
