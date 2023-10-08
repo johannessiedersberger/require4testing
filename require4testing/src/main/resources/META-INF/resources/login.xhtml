@@ -7,8 +7,27 @@
 </h:head>
 
 <h:body>
-    <div class="card">
-        Login
-    </div>
+    <p:menubar>
+        <p:menuitem value="Home" url="index.xhtml"/>
+        <p:menuitem value="Login" url="login.xhtml"/>
+
+    </p:menubar>
+    <h:form>
+
+
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Username:" />
+            <p:inputText id="username"  required="true" label="username" />
+
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" required="true" label="password" />
+
+            <f:facet name="footer">
+                <p:commandButton value="Login"  action="#{loginController.login}" />
+            </f:facet>
+        </h:panelGrid>
+    </h:form>
+
 </h:body>
 </html>
