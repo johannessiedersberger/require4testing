@@ -3,7 +3,8 @@ package com.ui.require4testing.controller;
 import com.ui.require4testing.model.Requirement;
 import com.ui.require4testing.service.RequirementsService;
 import jakarta.annotation.PostConstruct;
-import lombok.AllArgsConstructor;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 @Component("requirementsController")
 @Getter
 @Setter
-@AllArgsConstructor
+@SessionScoped
 public class RequirementsController {
 
     @Autowired
@@ -22,10 +23,32 @@ public class RequirementsController {
 
     private List<Requirement> requirements;
 
+    private Requirement requirement = new Requirement();
+
+    private String name;
+    private String description;
+
+    public RequirementsController(RequirementsService requirementsService) {
+        this.requirementsService = requirementsService;
+    }
+
     @PostConstruct
     public void init(){
-        Requirement requirement = new Requirement();
-
         requirements = requirementsService.getAllRequirements();
     }
+
+    public String createRequirement(){
+        this.requirement.setName(this.name);
+        this.requirement.setDescription(this.description);
+
+        requirementsService.save(requirement);
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+        return "requirements-list.xhtml?faces-redirect=true";
+    }
+
+    public String goToCreateRequirementPage(){
+        return "requirements-form.xhtml?faces-redirect=true";
+    }
+
 }

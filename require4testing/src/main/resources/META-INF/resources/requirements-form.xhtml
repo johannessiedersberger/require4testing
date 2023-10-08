@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Dashboard" url="dashboard.xhtml"/>
+        <p:menuitem value="Requirements" url="requirements-list.xhtml"/>
+
+    </p:menubar>
+    <h:form>
+        <div class="card">
+            <h1>Name</h1>
+            <p:inputText  value="#{requirementsController.name}" />
+            <h1>Beschreibung</h1>
+            <p:inputTextarea rows="6" cols="33" value="#{requirementsController.description}"/>
+        </div>
+
+        <p:commandButton value="Add the Person" action="#{requirementsController.createRequirement()}" />
+    </h:form>
+
+</h:body>
+</html>
