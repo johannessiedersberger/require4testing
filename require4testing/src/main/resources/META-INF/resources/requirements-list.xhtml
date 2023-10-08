@@ -26,6 +26,14 @@
                 <p:column headerText="Beschreibung">
                     <h:outputText value="#{requirement.description}" />
                 </p:column>
+
+                <p:column style="text-align: left">
+                    <p:commandButton action="requirements-update.xhtml?faces-redirect=true"  title="Update">
+                        <f:setPropertyActionListener value="#{requirement}" target="#{requirementsController.selectedRequirement}" />
+                    </p:commandButton>
+
+                    <p:commandButton action="#{requirementsController.deleteRequirement(requirement)}" title="Delete"></p:commandButton>
+                </p:column>
             </p:dataTable>
 
             <p:commandButton value="Requirement Erstellen" action="#{requirementsController.goToCreateRequirementPage()}" />

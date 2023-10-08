@@ -15,12 +15,12 @@
     <h:form>
         <div class="card">
             <h1>Name</h1>
-            <p:inputText  value="#{requirementsController.name}" />
+            <p:inputText  value="#{requirementsController.selectedRequirement.name}" />
             <h1>Beschreibung</h1>
-            <p:inputTextarea rows="6" cols="33" value="#{requirementsController.description}"/>
+            <p:inputTextarea rows="6" cols="33" value="#{requirementsController.selectedRequirement.description}"/>
         </div>
 
-        <p:commandButton value="Requirement erstellen" action="#{requirementsController.createRequirement()}" />
+        <p:commandButton value="Update Requirement" action="#{requirementsController.updateRequirement()}" />
     </h:form>
 
 </h:body>
