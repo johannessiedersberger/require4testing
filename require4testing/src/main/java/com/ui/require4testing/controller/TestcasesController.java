@@ -96,4 +96,9 @@ public class TestcasesController {
     public String goToCreateTestCasePage(){
         return "testcases-form.xhtml?faces-redirect=true";
     }
+
+    public String updateTestcase(){
+        testcaseService.save(this.selectedTestcase);
+        return "testcases-list.xhtml?faces-redirect=true";
+    }
 }
