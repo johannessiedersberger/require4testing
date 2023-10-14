@@ -23,13 +23,6 @@
             <h:outputLabel for="password" value="Password:" />
             <p:password id="password" value="#{loginController.password}" required="true" label="password" />
 
-            <p:outputLabel for="country" value="Country: "/>
-            <p:selectOneMenu id="country" value="#{loginController.userType}" style="width:150px">
-                <p:ajax listener="#{loginController.onUserTypeChange}"/>
-                <f:selectItem itemLabel="Nutzer auswählen" itemValue="" noSelectionOption="true"/>
-                <f:selectItems value="#{loginController.userTypes}"/>
-            </p:selectOneMenu>
-
             <f:facet name="footer">
                 <p:commandButton value="Login"  action="#{loginController.login}" />
             </f:facet>

@@ -64,7 +64,7 @@ public class RequirementsController {
 
     public String deleteRequirement(Requirement requirement){
 
-        long id = requirement.getId();
+        long id = requirement.getRequirementId();
         logger.info("" + id);
         requirementsService.delete(id);
 

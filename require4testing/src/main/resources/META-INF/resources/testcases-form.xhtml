@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Dashboard" url="dashboard.xhtml"/>
+        <p:menuitem value="Requirements" url="requirements-list.xhtml"/>
+        <p:menuitem value="Testcases" url="testcases-list.xhtml"/>
+    </p:menubar>
+    <h:form>
+        <div class="card">
+            <h1>Name</h1>
+            <p:inputText  value="#{testcasesController.name}" />
+            <h1>Beschreibung</h1>
+            <p:inputTextarea rows="6" cols="33" value="#{testcasesController.description}"/>
+            <h1>Requirement</h1>
+            <p:outputLabel for="requirement" value="Requirement: "/>
+            <p:selectOneMenu id="requirement" value="#{testcasesController.requirementId}" style="width:200px">
+                <p:ajax listener="#{testcasesController.onRequirementChange}"/>
+                <f:selectItem itemLabel="Requirement auswählen" itemValue="" noSelectionOption="true"/>
+                <f:selectItems value="#{testcasesController.requirements}"/>
+            </p:selectOneMenu>
+        </div>
+
+        <p:commandButton value="Testcase erstellen" action="#{testcasesController.createTestcase1()}" />
+    </h:form>
+
+</h:body>
+</html>
+

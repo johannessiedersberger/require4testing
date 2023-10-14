@@ -1,9 +1,6 @@
 package com.ui.require4testing.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +11,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Requirement {
+public class Testcase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long requirementId;
+    private Long testcaseId;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="requirement_id")
+    private Requirement requirement;
+
     private String name;
     private String description;
 }

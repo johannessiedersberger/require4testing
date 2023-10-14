@@ -15,29 +15,29 @@
     </p:menubar>
     <h:form>
         <div class="card">
-            <p:dataTable var="requirement" value="#{requirementsController.requirements}">
+            <p:dataTable var="testcase" value="#{testcasesController.testcases}">
                 <p:column headerText="ID">
-                    <h:outputText value="#{requirement.requirementId}" />
+                    <h:outputText value="#{testcase.testcaseId}" />
                 </p:column>
 
                 <p:column headerText="Name">
-                    <h:outputText value="#{requirement.name}" />
+                    <h:outputText value="#{testcase.name}" />
                 </p:column>
 
                 <p:column headerText="Beschreibung">
-                    <h:outputText value="#{requirement.description}" />
+                    <h:outputText value="#{testcase.description}" />
                 </p:column>
 
                 <p:column style="text-align: left">
-                    <p:commandButton action="requirements-update.xhtml?faces-redirect=true"  title="Update">
-                        <f:setPropertyActionListener value="#{requirement}" target="#{requirementsController.selectedRequirement}" />
+                    <p:commandButton action="testcases-update.xhtml?faces-redirect=true"  title="Update">
+                        <f:setPropertyActionListener value="#{testcase}" target="#{testcasesController.selectedTestcase}" />
                     </p:commandButton>
 
-                    <p:commandButton action="#{requirementsController.deleteRequirement(requirement)}" title="Delete"></p:commandButton>
+                    <p:commandButton action="#{testcasesController.deleteTestcase(testcase)}" title="Delete"></p:commandButton>
                 </p:column>
             </p:dataTable>
 
-            <p:commandButton value="Requirement Erstellen" action="#{requirementsController.goToCreateRequirementPage()}" />
+            <p:commandButton value="Testcase Erstellen" action="#{testcasesController.goToCreateTestCasePage()}" />
         </div>
     </h:form>
 
