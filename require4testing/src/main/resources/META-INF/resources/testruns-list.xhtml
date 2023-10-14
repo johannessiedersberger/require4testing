@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Dashboard" url="dashboard.xhtml"/>
+        <p:menuitem value="Requirements" url="requirements-list.xhtml"/>
+        <p:menuitem value="Testcases" url="testcases-list.xhtml"/>
+        <p:menuitem value="Testers" url="testers-list.xhtml"/>
+        <p:menuitem value="Testruns" url="testruns-list.xhtml"/>
+
+    </p:menubar>
+    <h:form>
+        <div class="card">
+            <p:dataTable var="testrun" value="#{testrunController.testruns}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{testrun.testrunId}" />
+                </p:column>
+
+                <p:column headerText="Name">
+                    <h:outputText value="#{testrun.name}" />
+                </p:column>
+
+                <p:column style="text-align: left">
+                    <p:commandButton action="testruns-update.xhtml?faces-redirect=true"  title="Update">
+                        <f:setPropertyActionListener value="#{testrun}" target="#{testrunController.selectedTestrun}" />
+                    </p:commandButton>
+
+                    <p:commandButton action="#{testrunController.deleteTestrun(testrun)}" title="Delete"></p:commandButton>
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton value="Tester Erstellen" action="#{testrunController.gotToCreateTestrun()}" />
+        </div>
+    </h:form>
+
+</h:body>
+</html>

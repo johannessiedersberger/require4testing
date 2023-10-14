@@ -68,6 +68,10 @@ public class TestcasesController {
         logger.info("" + this.requirementId);
     }
 
+    public void onRequirementChangeUpdate() {
+
+    }
+
     public String createTestcase1() {
         Requirement r = requirementsService.getRequirementById(this.requirementId);
 

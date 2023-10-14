@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Dashboard" url="dashboard.xhtml"/>
+        <p:menuitem value="Requirements" url="requirements-list.xhtml"/>
+        <p:menuitem value="Testcases" url="testcases-list.xhtml"/>
+        <p:menuitem value="Testers" url="testers-list.xhtml"/>
+
+    </p:menubar>
+    <h:form>
+        <div class="card">
+            <h1>Name</h1>
+            <p:inputText  value="#{testerController.selectedTester.name}" />
+        </div>
+
+        <p:commandButton value="Update Tester" action="#{testerController.updateTester()}" />
+    </h:form>
+
+</h:body>
+</html>
