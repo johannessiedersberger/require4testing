@@ -16,29 +16,25 @@
     </p:menubar>
     <h:form>
         <div class="card">
-            <p:dataTable var="testcase" value="#{testcasesController.testcases}">
+            <p:dataTable var="tester" value="#{testerController.testers}">
                 <p:column headerText="ID">
-                    <h:outputText value="#{testcase.testcaseId}" />
+                    <h:outputText value="#{tester.testerId}" />
                 </p:column>
 
                 <p:column headerText="Name">
-                    <h:outputText value="#{testcase.name}" />
-                </p:column>
-
-                <p:column headerText="Beschreibung">
-                    <h:outputText value="#{testcase.description}" />
+                    <h:outputText value="#{tester.name}" />
                 </p:column>
 
                 <p:column style="text-align: left">
-                    <p:commandButton action="testcases-update.xhtml?faces-redirect=true"  title="Update">
-                        <f:setPropertyActionListener value="#{testcase}" target="#{testcasesController.selectedTestcase}" />
+                    <p:commandButton action="testers-update.xhtml?faces-redirect=true"  title="Update">
+                        <f:setPropertyActionListener value="#{tester}" target="#{testerController.selectedTester}" />
                     </p:commandButton>
 
-                    <p:commandButton action="#{testcasesController.deleteTestcase(testcase)}" title="Delete"></p:commandButton>
+                    <p:commandButton action="#{testerController.deleteTester(tester)}" title="Delete"></p:commandButton>
                 </p:column>
             </p:dataTable>
 
-            <p:commandButton value="Testcase Erstellen" action="#{testcasesController.goToCreateTestCasePage()}" />
+            <p:commandButton value="Tester Erstellen" action="#{testerController.goToCreateTesterPage()}" />
         </div>
     </h:form>
 

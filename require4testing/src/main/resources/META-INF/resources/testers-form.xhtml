@@ -12,17 +12,14 @@
         <p:menuitem value="Requirements" url="requirements-list.xhtml"/>
         <p:menuitem value="Testcases" url="testcases-list.xhtml"/>
         <p:menuitem value="Testers" url="testers-list.xhtml"/>
-
     </p:menubar>
     <h:form>
         <div class="card">
             <h1>Name</h1>
-            <p:inputText  value="#{testcasesController.selectedTestcase.name}" />
-            <h1>Beschreibung</h1>
-            <p:inputTextarea rows="6" cols="33" value="#{testcasesController.selectedTestcase.description}"/>
+            <p:inputText  value="#{testerController.name}" />
         </div>
 
-        <p:commandButton value="Update Testcase" action="#{testcasesController.updateTestcase()}" />
+        <p:commandButton value="Requirement erstellen" action="#{testerController.createTester()}" />
     </h:form>
 
 </h:body>
