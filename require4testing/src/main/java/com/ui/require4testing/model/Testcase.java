@@ -16,7 +16,7 @@ public class Testcase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long testcaseId;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="requirement_id")
     private Requirement requirement;
 
