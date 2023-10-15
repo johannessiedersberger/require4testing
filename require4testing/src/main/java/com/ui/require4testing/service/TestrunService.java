@@ -73,4 +73,19 @@ public class TestrunService {
 
         return tcs;
     }
+
+    public TestcaseStatus getStatus(Testrun testrun, Testcase testcase){
+        TestrunTestcase testrunTestcase = testrunTestcaseRepository.findByTestrunAndTestcase(testrun, testcase).orElseThrow(EntityNotFoundException::new);
+        return testrunTestcase.getTestcaseStatus();
+    }
+
+    public void setTCSuccessfull(Testrun testrun, Testcase testcase) {
+        TestrunTestcase testrunTestcase = testrunTestcaseRepository.findByTestrunAndTestcase(testrun, testcase).orElseThrow(EntityNotFoundException::new);
+        testrunTestcase.setTestcaseStatus(TestcaseStatus.SUCCESSFULL);
+    }
+
+    public void setTCFailed(Testrun testrun, Testcase testcase) {
+        TestrunTestcase testrunTestcase = testrunTestcaseRepository.findByTestrunAndTestcase(testrun, testcase).orElseThrow(EntityNotFoundException::new);
+        testrunTestcase.setTestcaseStatus(TestcaseStatus.FAILED);
+    }
 }

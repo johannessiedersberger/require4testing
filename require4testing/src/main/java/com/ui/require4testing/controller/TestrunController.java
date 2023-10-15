@@ -161,4 +161,16 @@ public class TestrunController {
         Testcase tc = testcaseService.getTestcaseById(this.selectedTestcase);
         testrunService.connectTestrunAndTestcase(this.selectedTestrun, tc);
     }
+
+    public TestcaseStatus getTestCaseStatusFromTestcase(Testcase tc){
+        return testrunService.getStatus(this.selectedTestrun, tc);
+    }
+
+    public void setAsSuccessfull(Testcase tc){
+        testrunService.setTCSuccessfull(this.selectedTestrun, tc);
+    }
+
+    public void setAsFailed(Testcase tc){
+        testrunService.setTCFailed(this.selectedTestrun, tc);
+    }
 }

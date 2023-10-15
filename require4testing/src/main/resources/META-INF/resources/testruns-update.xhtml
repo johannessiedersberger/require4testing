@@ -38,7 +38,18 @@
             <p:column headerText="Name">
                 <h:outputText value="#{testcase.name}" />
             </p:column>
+            getTestCaseStatusFromTestcase
 
+            <p:column headerText="Status">
+                <h:outputText value="#{testrunController.getTestCaseStatusFromTestcase(testcase)}" />
+            </p:column>
+
+            <p:column>
+                <p:commandButton action="#{testrunController.setAsSuccessfull(testcase)}" title="SUCCESS" update="testcasesTable"></p:commandButton>
+            </p:column>
+            <p:column>
+                <p:commandButton action="#{testrunController.setAsFailed(testcase)}" title="FAILED" update="testcasesTable"></p:commandButton>
+            </p:column>
             <p:column style="text-align: left">
                 <p:commandButton action="#{testrunController.deleteTestcaseOnEdit(testcase)}" title="Delete" update="testcasesTable"></p:commandButton>
             </p:column>
