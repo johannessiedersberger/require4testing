@@ -28,6 +28,31 @@
             <f:selectItems value="#{testrunController.testers}"/>
         </p:selectOneMenu>
 
+        <h1>Testcases</h1>
+        <p:dataTable id="testcasesTable" var="testcase" value="#{testrunController.selectedTestcases}">
+            <p:column headerText="ID">
+                <h:outputText value="#{testcase.testcaseId}" />
+            </p:column>
+
+            <p:column headerText="Name">
+                <h:outputText value="#{testcase.name}" />
+            </p:column>
+
+            <p:column style="text-align: left">
+                <p:commandButton action="#{testrunController.deleteTestcase(testcase)}" title="Delete" update="testcasesTable"></p:commandButton>
+            </p:column>
+        </p:dataTable>
+
+        <h1>Testcase hinzufügen</h1>
+        <p:outputLabel for="testcase1" value="Testcase: "/>
+        <p:selectOneMenu id="testcase1" value="#{testrunController.selectedTestcase}" style="width:200px">
+            <p:ajax listener="#{testrunController.onTesterChange}"/>
+            <f:selectItem itemLabel="Testcase auswählen" itemValue="" noSelectionOption="true"/>
+            <f:selectItems value="#{testrunController.testcases}"/>
+        </p:selectOneMenu>
+
+        <p:commandButton value="Testcase hinzufügen" action="#{testrunController.addTestcaseToTestRun()}" update="testcasesTable"/>
+
 
 
         <p:commandButton value="Update Testrun" action="#{testrunController.updateTestrun()}" />

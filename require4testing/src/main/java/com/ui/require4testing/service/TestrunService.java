@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -59,5 +60,17 @@ public class TestrunService {
         TestrunTestcase testrunTestcase = testrunTestcaseRepository.findByTestrunAndTestcase(testrun, testcase).orElseThrow(EntityNotFoundException::new);
         testrunTestcase.setTestcaseStatus(testcaseStatus);
         testrunTestcaseRepository.save(testrunTestcase);
+    }
+
+    public List<Testcase> getTestcasesFromTestRun(Testrun testrun){
+        List <TestrunTestcase> tt = testrunTestcaseRepository.findByTestrun(testrun);
+
+        List<Testcase> tcs = new ArrayList<>();
+
+        for(TestrunTestcase currentRunTC : tt){
+            tcs.add(currentRunTC.getTestcase());
+        }
+
+        return tcs;
     }
 }

@@ -17,7 +17,7 @@ public class Testrun {
     private Long testrunId;
     private String name;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="tester_id")
     private Tester tester;
 }

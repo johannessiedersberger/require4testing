@@ -106,6 +106,12 @@ public class TestrunController {
     public String deleteTestrun(Testrun testrun){
         long id = testrun.getTestrunId();
 
+        // TODO: DELETE REFERENCES
+        List <Testcase> testcasesList = testrunService.getTestcasesFromTestRun(testrun);
+        for(Testcase tc :  testcasesList){
+            testrunService.deleteConnectionTestrunTestcase(testrun, tc);
+        }
+
         testrunService.delete(id);
 
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -134,8 +140,6 @@ public class TestrunController {
         this.selectedTestcases.add(testcaseToAdd);
 
         logger.info("added" + testcaseToAdd.getTestcaseId());
-
-
     }
 
     public void deleteTestcase(Testcase testcase){
