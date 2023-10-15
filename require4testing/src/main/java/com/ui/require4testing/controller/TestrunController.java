@@ -92,6 +92,12 @@ public class TestrunController {
         this.testrun.setTester(t);
 
         testrunService.save(testrun);
+
+        // Testcases
+        for(Testcase currentTC : this.selectedTestcases){
+            testrunService.connectTestrunAndTestcase(testrun, currentTC);
+        }
+
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
         return "testruns-list.xhtml?faces-redirect=true";
