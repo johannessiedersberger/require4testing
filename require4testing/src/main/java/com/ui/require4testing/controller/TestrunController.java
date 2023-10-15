@@ -146,4 +146,19 @@ public class TestrunController {
         this.selectedTestcases.remove(testcase);
         logger.info("deleted" + testcase.getTestcaseId());
     }
+
+    // EDIT
+
+    public List<Testcase> getTestcasesToEdit(Testrun testrun){
+        return testrunService.getTestcasesFromTestRun(testrun);
+    }
+
+    public void deleteTestcaseOnEdit(Testcase testcase){
+        testrunService.deleteConnectionTestrunTestcase(this.selectedTestrun, testcase);
+    }
+
+    public void addTestcaseOnEdit(){
+        Testcase tc = testcaseService.getTestcaseById(this.selectedTestcase);
+        testrunService.connectTestrunAndTestcase(this.selectedTestrun, tc);
+    }
 }

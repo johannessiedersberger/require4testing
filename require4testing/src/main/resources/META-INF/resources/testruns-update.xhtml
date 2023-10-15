@@ -29,7 +29,7 @@
         </p:selectOneMenu>
 
         <h1>Testcases</h1>
-        <p:dataTable id="testcasesTable" var="testcase" value="#{testrunController.selectedTestcases}">
+        <p:dataTable id="testcasesTable" var="testcase" value="#{testrunController.getTestcasesToEdit(testrunController.selectedTestrun)}">
             <p:column headerText="ID">
                 <h:outputText value="#{testcase.testcaseId}" />
             </p:column>
@@ -39,7 +39,7 @@
             </p:column>
 
             <p:column style="text-align: left">
-                <p:commandButton action="#{testrunController.deleteTestcase(testcase)}" title="Delete" update="testcasesTable"></p:commandButton>
+                <p:commandButton action="#{testrunController.deleteTestcaseOnEdit(testcase)}" title="Delete" update="testcasesTable"></p:commandButton>
             </p:column>
         </p:dataTable>
 
@@ -51,10 +51,10 @@
             <f:selectItems value="#{testrunController.testcases}"/>
         </p:selectOneMenu>
 
-        <p:commandButton value="Testcase hinzufügen" action="#{testrunController.addTestcaseToTestRun()}" update="testcasesTable"/>
+        <p:commandButton value="Testcase hinzufügen" action="#{testrunController.addTestcaseOnEdit()}" update="testcasesTable"/>
 
 
-
+        <br/><br/>
         <p:commandButton value="Update Testrun" action="#{testrunController.updateTestrun()}" />
     </h:form>
 
