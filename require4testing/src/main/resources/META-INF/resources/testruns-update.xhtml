@@ -17,10 +17,18 @@
     <h:form>
         <div class="card">
             <h1>Name</h1>
-            <p:inputText  value="#{testerController.selectedTester.name}" />
+            <p:inputText  value="#{testrunController.selectedTestrun.name}" />
         </div>
 
-        <p:commandButton value="Update Tester" action="#{testerController.updateTester()}" />
+        <h1>Tester</h1>
+        <p:outputLabel for="tester11" value="Tester: "/>
+        <p:selectOneMenu id="tester11" value="#{testrunController.selectedTestrun.tester.testerId}" style="width:200px">
+            <p:ajax listener="#{testrunController.onTesterChange}"/>
+            <f:selectItem itemLabel="Tester auswählen" itemValue="" noSelectionOption="true"/>
+            <f:selectItems value="#{testrunController.testers}"/>
+        </p:selectOneMenu>
+
+        <p:commandButton value="Update Testrun" action="#{testrunController.updateTestrun()}" />
     </h:form>
 
 </h:body>

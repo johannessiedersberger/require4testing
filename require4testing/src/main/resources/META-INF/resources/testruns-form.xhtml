@@ -20,10 +20,10 @@
         </div>
 
         <h1>Tester</h1>
-        <p:outputLabel for="tester" value="Tester: "/>
-        <p:selectOneMenu id="tester" value="#{testrunController.tester}" style="width:200px">
-            <p:ajax listener="#{testcasesController.onTesterChange}"/>
-            <f:selectItem itemLabel="Requirement auswählen" itemValue="" noSelectionOption="true"/>
+        <p:outputLabel for="tester11" value="Tester: "/>
+        <p:selectOneMenu id="tester11" value="#{testrunController.testerId}" style="width:200px">
+            <p:ajax listener="#{testrunController.onTesterChange}"/>
+            <f:selectItem itemLabel="Tester auswählen" itemValue="" noSelectionOption="true"/>
             <f:selectItems value="#{testrunController.testers}"/>
         </p:selectOneMenu>
 

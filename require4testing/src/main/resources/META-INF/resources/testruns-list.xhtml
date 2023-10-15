@@ -26,6 +26,10 @@
                     <h:outputText value="#{testrun.name}" />
                 </p:column>
 
+                <p:column headerText="Tester">
+                    <h:outputText value="#{testrun.tester.name}" />
+                </p:column>
+
                 <p:column style="text-align: left">
                     <p:commandButton action="testruns-update.xhtml?faces-redirect=true"  title="Update">
                         <f:setPropertyActionListener value="#{testrun}" target="#{testrunController.selectedTestrun}" />
@@ -35,7 +39,7 @@
                 </p:column>
             </p:dataTable>
 
-            <p:commandButton value="Tester Erstellen" action="#{testrunController.gotToCreateTestrun()}" />
+            <p:commandButton value="Testrun Erstellen" action="#{testrunController.gotToCreateTestrun()}" />
         </div>
     </h:form>
 

@@ -8,6 +8,7 @@ import com.ui.require4testing.service.TestrunService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.model.SelectItem;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,14 @@ public class TestrunController {
 
     private Testrun selectedTestrun;
 
-    private Tester tester;
+    public Long testerId;
     private String name;
 
     private Testrun testrun = new Testrun();
 
-    private Map<String, Tester> testers;
+    private Map<String, Long> testers;
+
+
 
 
     public TestrunController(TestcaseService testcaseService, TestrunService testrunService, TesterService testerService) {
@@ -59,18 +62,36 @@ public class TestrunController {
         List<Tester> testers = testerService.getAllTesters();
 
         for(Tester t : testers){
-            this.testers.put(t.getTesterId() +  ": " + t.getName(), tester);
+            this.testers.put(t.getName(), t.getTesterId());
         }
     }
 
     public String createTestrun() {
 
         this.testrun.setName(this.name);
-        this.testrun.setTester(this.tester);
+        Tester t = testerService.getTesterById(this.testerId);
+        this.testrun.setTester(t);
 
         testrunService.save(testrun);
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
+        return "testruns-list.xhtml?faces-redirect=true";
+    }
+
+    public String deleteTestrun(Testrun testrun){
+        long id = testrun.getTestrunId();
+
+        testrunService.delete(id);
+
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+        return "testruns-list.xhtml?faces-redirect=true";
+    }
+
+    public String updateTestrun(){
+        Tester t = testerService.getTesterById(this.selectedTestrun.getTester().getTesterId());
+        testrunService.save(this.selectedTestrun);
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "testruns-list.xhtml?faces-redirect=true";
     }
 
