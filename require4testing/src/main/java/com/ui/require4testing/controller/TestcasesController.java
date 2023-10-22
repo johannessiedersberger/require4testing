@@ -75,8 +75,6 @@ public class TestcasesController {
     public String createTestcase1() {
         Requirement r = requirementsService.getRequirementById(this.requirementId);
 
-        logger.info("" + r.getRequirementId());
-
         this.testcase.setName(this.name);
         this.testcase.setDescription(this.description);
         this.testcase.setRequirement(r);

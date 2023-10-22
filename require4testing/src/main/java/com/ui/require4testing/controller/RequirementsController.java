@@ -65,11 +65,10 @@ public class RequirementsController {
     public String deleteRequirement(Requirement requirement){
 
         long id = requirement.getRequirementId();
-        logger.info("" + id);
+
         requirementsService.delete(id);
 
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-
 
         return "requirements-list.xhtml?faces-redirect=true";
     }
